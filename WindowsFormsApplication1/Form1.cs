@@ -21,6 +21,8 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             //Color por defecto
             color = Color.Black;
+           
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -53,16 +55,21 @@ namespace WindowsFormsApplication1
             color = diag.Color;
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            contador = 3;
+        }
+
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-
+          
 
             if (contador == 1)
             {
                 Graphics papel;
                 papel = pictureBox1.CreateGraphics();
                 Pen lapiz = new Pen(color);              
-                papel.DrawEllipse(lapiz,10, 10, 10, 10);
+                papel.DrawEllipse(lapiz,100,50,100,50);
             }
             if (contador == 2)
             {
@@ -73,17 +80,18 @@ namespace WindowsFormsApplication1
             }
             if (contador == 3)
             {
-                // Graphics papel;
-                // papel = pictureBox1.CreateGraphics();
-                // Pen lapiz = new Pen(Color.Black);
-                //papel.DrawCurve(lapiz,  100, 200, 100);
+                 Graphics papel;
+                 papel = pictureBox1.CreateGraphics();
+                Pen lapiz = new Pen(color);
+                Point[] points = { new Point(100, 20), new Point(0, 0), new Point(20, 100) };
+                papel.DrawPolygon(lapiz, points);
 
-                
+
 
             }
 }
 
-       
+        
     }
 }
 
