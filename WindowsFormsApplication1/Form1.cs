@@ -28,8 +28,9 @@ namespace WindowsFormsApplication1
         private void Form1_Load(object sender, EventArgs e)
         { }
         //Selector de figura
-        public int contador = 0;   
-        
+        public int contador = 0;
+        public int tamaño = 1;
+   
     
     private void button1_Click(object sender, EventArgs e)
         {
@@ -61,37 +62,63 @@ namespace WindowsFormsApplication1
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
+        { }
+
+
+
+
+        private void pictureBox1_MouseClick(object sender, MouseEventArgs e)
         {
-          
+            Graphics papel;
+            papel = pictureBox1.CreateGraphics();
+            //Random
+            Random x = new Random();
+            Random y = new Random();
 
             if (contador == 1)
             {
-                Graphics papel;
-                papel = pictureBox1.CreateGraphics();
-                Pen lapiz = new Pen(color);              
-                papel.DrawEllipse(lapiz,100,50,100,50);
+
+                Pen lapiz = new Pen(color, tamaño);
+                papel.DrawEllipse(lapiz, e.X,e.Y,50,50);
             }
             if (contador == 2)
             {
-                Graphics papel;
-                papel = pictureBox1.CreateGraphics();
-                Pen lapiz = new Pen(color);
-                papel.DrawRectangle(lapiz, 100,50,100,50);
+
+                Pen lapiz = new Pen(color, tamaño);
+                papel.DrawRectangle(lapiz, e.X, e.Y, e.X-20, e.Y-20);
             }
             if (contador == 3)
             {
-                 Graphics papel;
-                 papel = pictureBox1.CreateGraphics();
-                Pen lapiz = new Pen(color);
-                Point[] points = { new Point(100, 20), new Point(0, 0), new Point(20, 100) };
+
+                Pen lapiz = new Pen(color, tamaño);
+                Point[] points = { new Point(e.X+60, e.Y+30), new Point(e.X+10, e.Y+15), new Point(e.X+5,e.Y+60) };
                 papel.DrawPolygon(lapiz, points);
 
 
 
             }
-}
 
-        
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+            try
+            {
+                tamaño = Convert.ToInt32(textBox1.Text);
+            tamaño = int.Parse(textBox1.Text);
+            } 
+            catch(FormatException)
+            { }
+
+
+
+
+        }
+
+        private void pictureBox1_Paint(object sender, PaintEventArgs e)
+        {
+            
+        }
     }
 }
-
