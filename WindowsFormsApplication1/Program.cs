@@ -16,6 +16,13 @@ namespace WindowsFormsApplication1
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+            //creamos las ordenes
+            Form2 sp = new Form2();
+            //cuando el temporalizador lance el Dialogo de resultados se ejecuta la forma 1
+            if (sp.ShowDialog()== DialogResult.OK)
+            {
+
+            }
             Application.Run(new Form1());
         }
     }

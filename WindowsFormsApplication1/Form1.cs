@@ -118,7 +118,9 @@ namespace WindowsFormsApplication1
 
         private void pictureBox1_Paint(object sender, PaintEventArgs e)
         {
-            
         }
+
+
+        //fin del bloque 
     }
 }
